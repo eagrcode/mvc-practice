@@ -4,6 +4,17 @@ function index(req, res) {
   res.send(TaskModel.getAll());
 }
 
+function showById(req, res) {
+  const idx = parseInt(req.params.id);
+
+  try {
+    const task = TaskModel.getOneById(idx);
+    res.status(201).send(task);
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
+}
+
 function create(req, res) {
   try {
     // grab data from body of request
@@ -17,5 +28,29 @@ function create(req, res) {
   }
 }
 
+function remove(req, res) {
+  try {
+    // get id of request
+    const id = req.params.id;
+    // get task by id
+    const item = TaskModel.getOneById(id);
+    item.remove();
+    res.status(204).send();
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
+}
+
+function update(req, res) {
+  try {
+    const id = req.params.id;
+    const item = TaskModel.getOneById(id);
+    const updated = item.update();
+    res.json(updated);
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
+}
+
 // note to self - when exporting a function that grabs an object, use curly brackets!
-module.exports = { index, create };
+module.exports = { index, showById, create, remove, update };
