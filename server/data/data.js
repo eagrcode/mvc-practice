@@ -17,8 +17,14 @@ let data = [
     description: "Get gainZ bro!",
     completed: false,
   },
+  {
+    id: 3,
+    title: "Slepp gain",
+    description: "Get more gainz bro!",
+    completed: false,
+  },
 ];
 
-let nextId = 3;
+let nextId = 4;
 
 module.exports = { data, nextId };
