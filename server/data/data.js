@@ -19,4 +19,6 @@ let data = [
   },
 ];
 
-module.exports = data;
+let nextId = 3;
+
+module.exports = { data, nextId };

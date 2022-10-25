@@ -6,5 +6,6 @@ const tasksRouter = express.Router();
 
 // GET all tasks - /tasks
 tasksRouter.get("/", tasksController.index);
+tasksRouter.post("/", tasksController.create);
 
 module.exports = tasksRouter;
